@@ -17,12 +17,14 @@ def get_imgurl(html):
 
 def save_image(img_url_list):
     img_dir = 'D:\\images'
-    os.mkdir(img_dir)
+    if not os.path.exists(img_dir):
+        os.mkdir(img_dir)
     i = 1
     for u in img_url_list:
         print('正在下载第%s张 %s' % (i, u))
         resp = requests.get(u)
-        file = os.path.join(img_dir, str(i) + '.jpg')
+        file_name = os.path.split(u)[1]
+        file = os.path.join(img_dir, file_name)
         i = i + 1
         with open(file, 'wb') as f:
             f.write(resp.content)
