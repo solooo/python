@@ -21,7 +21,7 @@ def save_image(img_url_list):
     os.mkdir(img_dir)
     i = 1
     for u in img_url_list:
-        print('正在下载第%s张' % i)
+        print('正在下载第%s张 %s' % (i, u))
         resp = requests.get(u)
         file = os.path.join(img_dir, str(i) + '.jpg')
         i = i + 1
